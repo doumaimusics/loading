@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{padding: 0;margin: 0;list-style: none;}
+		body{position:relative;width: 100%;height: 500px;}
+		#loadingWrapper{
+			width:32px;
+		    height: 32px;
+		    position: absolute;
+		    left: 0;top: 0;
+		    right: 0;bottom: 0;
+		    margin: auto;
+		}
+		#loadingWrapper .loadingImg{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<body>
+		<input type="button" value="开始" id="add"/>
+		<input type="button" value="结束" id="remove"/>		
+	</body>
+</html>
+<script>
+	function addLoading(){
+		var loadingWrapper = document.createElement('div');
+		loadingWrapper.setAttribute('id','loadingWrapper');
+		var loadingImg=document.createElement('img');
+		loadingImg.src='loading.gif';
+		loadingImg.setAttribute('class','loadingImg');
+		loadingWrapper.appendChild(loadingImg);
+		document.body.appendChild(loadingWrapper);
+		document.body.style.overflow='hidden';
+	}	
+	function delLoading(){
+		var loadingWrapper = document.getElementById('loadingWrapper');
+		document.body.removeChild(loadingWrapper);
+	}
+	
+	window.onload=function(){
+		var oAdd=document.getElementById('add')
+		var oRemove=document.getElementById('remove');
+		oAdd.onclick=function(){
+			addLoading()
+		}
+		oRemove.onclick=function(){
+			delLoading()
+		}
+	}
+</script>
